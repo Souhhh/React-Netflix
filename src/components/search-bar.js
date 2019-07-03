@@ -4,7 +4,10 @@ import React, {Component} from 'react'
 class SearchBar extends Component {
     constructor(props){
         super(props);
-        this.state = {searchText:"", placeholder:"Entrez votre film ..."}
+        this.state = {searchText:"", placeholder:"Entrez votre film ...",
+        intervalBeforeRequest:1000,
+        lockRequest: false,
+        }        
     }
     render() {
         return (
@@ -21,11 +24,20 @@ class SearchBar extends Component {
     }
 
     handleChange(event) {
-        this.setState({searchText:event.target.value}) // Entre parenthèses, on met le nom de ce qu'on veut modifier.
+        this.setState({searchText:event.target.value}); // Entre parenthèses, on met le nom de ce qu'on veut modifier.
+        if(!this.state.lockRequest){
+            this.setState({lockRequest:true})
+            setTimeout(function(){this.search()}.bind(this),this.state.intervalBeforeRequest)
+        }
     }
 
-    handleOnClick(event){
+    handleOnClick(){
+        this.search();
+    }
+
+    search(){
         this.props.callback(this.state.searchText);
+        this.setState({lockRequest:false})
     }
 }
 export default SearchBar;
