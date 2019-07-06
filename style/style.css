@@ -13,4 +13,31 @@ li:hover{
 }
 body{
     background-color: #141414;
+    color: #E0E0E0;;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    background-color: black;
+  }
+/* .description {
+    grid-column: 1 / 3;
+    grid-row: 1;
+} */
+.lavideo { 
+    grid-column: 2 / 4;
+    /* grid-row: 1 / 3; */
+}
+
+.description{
+    padding-left: 4rem;
+    padding-top: 8rem;
+}
+
+.container-fluid{
+    padding-right: 0;
+    padding-left: 0;
 }

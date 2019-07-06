@@ -17,6 +17,7 @@
     align-items: center;
     height: 100%;
     padding: 0 0.5rem; /*espace entre mon logo et la marge de gauche*/
+    margin-bottom: 1.8rem;
 }
 
 .toolbar_navigation-items a{
@@ -43,7 +44,7 @@
 .toolbar_navigation-items li{
     padding: 0 0.5 rem;
     margin-right: 0.5rem;
-    margin-left: 2rem;
+    margin-left: 3rem;
     background-color: transparent;
 }
 
@@ -51,3 +52,6 @@
     flex: 1; Pour que ça prenne tout l'espace libre et que donc les éléments de la liste se mettent tout à droite de la navbar.
 } */
 
+.spacer{
+    flex: 1;
+}

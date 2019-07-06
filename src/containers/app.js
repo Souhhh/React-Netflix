@@ -7,8 +7,6 @@ import axios from 'axios'
 //import Row from 'react-bootstrap/Row';
 import Toolbar from '../components/Toolbar/Toolbar'
 
-
-
 const API_END_POINT = "https://api.themoviedb.org/3/" // point d'entrer de l'API
 const POPULAR_MOVIES_URL = "discover/movie?language=fr&sort_by=popularity.desc&include_adult=false&append_to_response=images"
 const API_KEY = "api_key=844132b4db1beb141b6a86d0d727445a"
@@ -92,11 +90,11 @@ class App extends Component {
                     <SearchBar callback={this.onClickSearch.bind(this)}/>
                 </div>
                 <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-4">
+                    <div className="wrapper">
+                        <div className="description">
                             <VideoDetail title={this.state.currentMovie.title} description={this.state.currentMovie.overview}/>
                         </div>
-                        <div className="col-8">
+                        <div className="lavideo">
                             <Video videoId={this.state.currentMovie.videoId}/>                        
                         </div>
                     </div>
