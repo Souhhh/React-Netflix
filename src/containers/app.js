@@ -4,6 +4,10 @@ import VideoList from './video-list'
 import VideoDetail from '../components/video-detail'
 import Video from '../components/video'
 import axios from 'axios'
+//import Row from 'react-bootstrap/Row';
+import Toolbar from '../components/Toolbar/Toolbar'
+
+
 
 const API_END_POINT = "https://api.themoviedb.org/3/" // point d'entrer de l'API
 const POPULAR_MOVIES_URL = "discover/movie?language=fr&sort_by=popularity.desc&include_adult=false&append_to_response=images"
@@ -81,19 +85,26 @@ class App extends Component {
         }
         return (
             <div>
+                <div>
+                    <Toolbar/>
+                </div>
                 <div className="search_bar">
                     <SearchBar callback={this.onClickSearch.bind(this)}/>
                 </div>
-
-                <div className="row">
-                    <div className="col-md-8">
-                        <Video videoId={this.state.currentMovie.videoId}/>
-                        <VideoDetail title={this.state.currentMovie.title} description={this.state.currentMovie.overview}/>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-4">
+                            <VideoDetail title={this.state.currentMovie.title} description={this.state.currentMovie.overview}/>
+                        </div>
+                        <div className="col-8">
+                            <Video videoId={this.state.currentMovie.videoId}/>                        
+                        </div>
                     </div>
-                    <div className="col-md-4">
-                        {renderVideoList()} 
-                    </div>
-                </div>²
+                </div>
+                <div>
+                    {renderVideoList()} 
+                </div>
+                
             </div>
         )
     }

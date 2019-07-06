@@ -1,0 +1,53 @@
+.toolbar{
+    background-color :#141414;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.toolbar__logo a{
+    color: red;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.toolbar__navigation{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 0.5rem; /*espace entre mon logo et la marge de gauche*/
+}
+
+.toolbar_navigation-items a{
+    color: rgb(216, 216, 216);
+    text-decoration: none;
+    font-family: Georgia, 'Times New Roman', Times, serif
+}
+
+.toolbar_navigation-items a:hover{
+    color: red;
+}
+
+.toolbar_navigation-items a:active{
+    color: red;
+}
+
+.toolbar_navigation-items ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.toolbar_navigation-items li{
+    padding: 0 0.5 rem;
+    margin-right: 0.5rem;
+    margin-left: 2rem;
+    background-color: transparent;
+}
+
+/* .spacer{
+    flex: 1; Pour que ça prenne tout l'espace libre et que donc les éléments de la liste se mettent tout à droite de la navbar.
+} */
+
