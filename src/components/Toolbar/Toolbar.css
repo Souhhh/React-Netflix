@@ -35,20 +35,6 @@
     color: red;
 }
 
-.toolbar_navigation-items ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-.toolbar_navigation-items li{
-    padding: 0 0.5 rem;
-    margin-right: 0.5rem;
-    margin-left: 3rem;
-    background-color: transparent;
-}
-
 /* .spacer{
     flex: 1; Pour que ça prenne tout l'espace libre et que donc les éléments de la liste se mettent tout à droite de la navbar.
 } */
@@ -59,4 +45,25 @@
 
 .navDroite{
     padding-right: 2rem;
+}
+
+
+
+/* CSS pour la liste des films recommandés */
+.videos ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.videos li{
+    padding: 0 0.5 rem;
+    margin-right: 0.5rem;
+    margin-left: 3rem;
+    background-color: transparent;
+    display: flex;
+}
+.videos{
+    display: flex;
 }

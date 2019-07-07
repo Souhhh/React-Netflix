@@ -33,11 +33,44 @@ body{
 }
 
 .description{
-    padding-left: 2rem;
+    padding-left: 2.3rem;
     padding-top: 8rem;
 }
 
 .container-fluid{
     padding-right: 0;
     padding-left: 0;
+}
+
+
+.toolbar_navigation-items ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.toolbar_navigation-items li{
+    padding: 0 0.5rem;
+    margin-right: 0.5rem;
+    margin-left: 3rem;
+    background-color: transparent;
+}
+.barre{
+    width: 17rem;
+    background-color:  #141414;
+    color: rgb(216, 216, 216);
+    /* margin-left: 1.7rem; */
+    /* margin-top: -3.7rem;  */
+}
+
+.bouton{
+    background-color:  #141414;
+    color: rgb(216, 216, 216);
+}
+
+.titreSection{
+    margin-left: 2.3rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 2rem;
 }

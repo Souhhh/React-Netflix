@@ -2,7 +2,7 @@ import React from 'react';
 // import 'Toolbar.css';
 import SearchBar from '../search-bar'
 
-const toolbar = props => (
+const toolbar = (props) => (
     <header className="toolbar mb-5">
         <nav className="toolbar__navigation">
             <div></div>

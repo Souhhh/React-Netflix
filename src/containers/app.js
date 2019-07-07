@@ -6,6 +6,7 @@ import Video from '../components/video'
 import axios from 'axios'
 //import Row from 'react-bootstrap/Row';
 import Toolbar from '../components/Toolbar/Toolbar'
+import Carousel from '../components/Carousel/Carousel';
 
 const API_END_POINT = "https://api.themoviedb.org/3/" // point d'entrer de l'API
 const POPULAR_MOVIES_URL = "discover/movie?language=fr&sort_by=popularity.desc&include_adult=false&append_to_response=images"
@@ -84,11 +85,36 @@ class App extends Component {
         return (
             <div>
                 <div>
-                    <Toolbar/>
-                </div>
-                <div className="search_bar">
+                <header className="toolbar mb-5">
+        <nav className="toolbar__navigation">
+            <div></div>
+            <div className="toolbar__logo"><a href="/">Netflix</a></div>
+            {/* <div className="spacer"></div> */}
+            <div className="toolbar_navigation-items">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/">TV Shows</a></li>
+                    <li><a href="/">Movies</a></li>
+                    <li><a href="/">Recently Added</a></li>
+                    <li><a href="/">My List</a></li>
+                {/* <SearchBar/> */}
+                </ul>
+            </div>
+            <div className="spacer"></div>
+            <div className="search_bar"> 
                     <SearchBar callback={this.onClickSearch.bind(this)}/>
                 </div>
+            <div className="toolbar_navigation-items">
+                <ul>
+                    <li><a href="/">KIDS</a></li>
+                    <li className="navDroite"><a href="/">DVD</a></li>
+                    {/* <img src="../../../images/cloche-notifications.png"></img> */}
+                </ul>
+            </div>
+        </nav>
+    </header>
+                </div>
+                
                 <div className="container-fluid">
                     <div className="wrapper">
                         <div className="description">
@@ -101,6 +127,9 @@ class App extends Component {
                 </div>
                 <div>
                     {renderVideoList()} 
+                </div>
+                <div>
+                    <Carousel/>
                 </div>
                 
             </div>
