@@ -10,9 +10,9 @@ const VideoListItem = (props) => {
                 <div className="media-left">
                     <img className="media-object img-rounded" height="100px" width="100px" src={`${IMAGE_BASE_URL}${movie.poster_path}`}/>
                 </div>
-                <div className="media-body">
-                    <h3 className="title_list_item">{movie.title}</h3> 
-                </div>
+                {/* <div className="media-body"> */}
+                    {/* <h3 className="title_list_item">{movie.title}</h3>  */}
+                {/* </div> */}
             </div>
            </li>
 

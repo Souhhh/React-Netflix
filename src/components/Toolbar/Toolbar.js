@@ -10,7 +10,7 @@ const toolbar = (props) => (
             {/* <div className="spacer"></div> */}
             <div className="toolbar_navigation-items">
                 <ul>
-                    <li><a href="/">Home</a></li>
+                    <li><a className="li" href="/">Home</a></li>
                     <li><a href="/">TV Shows</a></li>
                     <li><a href="/">Movies</a></li>
                     <li><a href="/">Recently Added</a></li>

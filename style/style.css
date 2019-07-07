@@ -52,9 +52,12 @@ body{
 
 .toolbar_navigation-items li{
     padding: 0 0.5rem;
-    margin-right: 0.5rem;
-    margin-left: 3rem;
+    margin-right: 0rem;
+    margin-left: 1rem;
     background-color: transparent;
+}
+#myLi{
+    padding-left: 2.6rem;
 }
 .barre{
     width: 17rem;
@@ -73,4 +76,19 @@ body{
     margin-left: 2.3rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin-top: 2rem;
+}
+.container-videoList{
+    overflow: hidden;
+}
+
+.arrow__btn{
+    position: absolute;
+    color: #fff;
+    text-decoration: none !important;
+    font-size: 6em;
+    background:rgb(0,0,0);
+    width: 80px;
+    padding: 20px;
+    text-align: center;
+    z-index: 1;
 }

@@ -23,10 +23,10 @@ class App extends Component {
     componentWillMount() {
         this.initMovies();
     }
-
+    // Changement du slice. Avant : 1,6 et maintenant : 1,19.
     initMovies(){
         axios.get(`${API_END_POINT}${POPULAR_MOVIES_URL}&${API_KEY}`).then(function(response){
-            this.setState({movieList:response.data.results.slice(1,6), currentMovie:response.data.results[0]}, function(){
+            this.setState({movieList:response.data.results.slice(1,19), currentMovie:response.data.results[0]}, function(){
                 this.applyVideoToCurrentMovie();
             });
 
@@ -56,7 +56,8 @@ class App extends Component {
     
     setRecommendation(){
         axios.get(`${API_END_POINT}movie/${this.state.currentMovie.id}/recommendations?${API_KEY}&language=fr`).then(function(response){
-            this.setState({movieList:response.data.results.slice(0,5)});
+            // Même chose ici, j'ai changé le slice pour avoir plus de 5 recommendations.
+            this.setState({movieList:response.data.results.slice(0,19)});
         }.bind(this));
     }
     
@@ -92,7 +93,7 @@ class App extends Component {
             {/* <div className="spacer"></div> */}
             <div className="toolbar_navigation-items">
                 <ul>
-                    <li><a href="/">Home</a></li>
+                    <li id="myLi"><a href="/">Home</a></li>
                     <li><a href="/">TV Shows</a></li>
                     <li><a href="/">Movies</a></li>
                     <li><a href="/">Recently Added</a></li>
@@ -128,10 +129,6 @@ class App extends Component {
                 <div>
                     {renderVideoList()} 
                 </div>
-                <div>
-                    <Carousel/>
-                </div>
-                
             </div>
         )
     }
