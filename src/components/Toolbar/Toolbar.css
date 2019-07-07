@@ -10,6 +10,7 @@
     font-size: 1.3rem;
     font-weight: bold;
     text-transform: uppercase;
+    padding-left: 2rem;
 }
 
 .toolbar__navigation{
@@ -54,4 +55,8 @@
 
 .spacer{
     flex: 1;
+}
+
+.navDroite{
+    padding-right: 2rem;
 }

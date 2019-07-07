@@ -22,7 +22,7 @@ const toolbar = props => (
             <div className="toolbar_navigation-items">
                 <ul>
                     <li><a href="/">KIDS</a></li>
-                    <li><a href="/">DVD</a></li>
+                    <li className="navDroite"><a href="/">DVD</a></li>
                     {/* <img src="../../../images/cloche-notifications.png"></img> */}
                 </ul>
             </div>
