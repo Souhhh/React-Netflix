@@ -18,7 +18,7 @@ const VideoList = (props) => {
                 <ul className="videos">
                 {/* Pour chaque vidéo recommandée, on lui donne un id pour ensuite se référer à lui pour fiare tourner le carousel. */}
                 {movieList.map((movie, index) => {
-                        return <div id ={index} ><VideoListItem key= {movie.id} movie={movie}/></div>
+                        return <div id ={index} ><VideoListItem key= {movie.id} movie={movie} callback={onClickListItem}/></div>
                     })}
                 </ul>
                 <a href={`#${next}`} className="arrow__btn" onClick={scrollRight} callback={scrollRight}>›</a>
