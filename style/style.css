@@ -35,6 +35,8 @@ body{
 .description{
     padding-left: 2.3rem;
     padding-top: 8rem;
+    /* Pour avoir un dégradé de noir à mon texte (titre + résumé de la vidéo principale). */
+    background: linear-gradient(-90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
 }
 
 .container-fluid{
@@ -86,9 +88,71 @@ body{
     color: #fff;
     text-decoration: none !important;
     font-size: 6em;
-    background:rgb(0,0,0);
+    /* background:#141414; */
     width: 80px;
     padding: 20px;
     text-align: center;
     z-index: 1;
+}
+a:hover{
+    color: white;
+    /* background-color: transparent; */
+}
+a:nth-of-type(1) {
+    top: 635px !important;
+    bottom:0; 
+    left:0;
+    /* background: linear-gradient(-90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); */
+}
+a:nth-of-type(2) {
+    top: 635px !important;
+    bottom:0; 
+    right: 0;
+    /* background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); */
+  }
+
+.img-roundd{ 
+    /* height: 140px; */
+    /* width: 220px; */
+    background-size: cover;
+    /* height: 100%; */
+    /* width: 100%; */
+}
+
+.list-group-item{
+    border-color: #141414;
+    margin-left: 0 !important;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.media-left{
+    padding: 0 2px;
+    transition: 250ms all;
+}
+/* .media-left:hover{ */
+    /* margin: 0 40px;
+    transform: scale(1.2); */
+/* } */
+
+.media{
+    display: grid;
+    grid-template-columns: repeat(3,100%);
+    /* overflow: hidden; */
+    scroll-behavior: smooth;
+    transition: all ease .4s;
+
+    height: 140px;
+    width: 220px;
+}
+.media:hover {
+    width: 250px;
+    height: 160px;
+    margin: -10px 0;
+    /* Pour que l'élément sur lequel on est se comporte comme quelque chose de cliquable. */
+    cursor: pointer;
+}
+.media img {
+    width: 100%;
 }

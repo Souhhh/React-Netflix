@@ -6,7 +6,6 @@ import Video from '../components/video'
 import axios from 'axios'
 //import Row from 'react-bootstrap/Row';
 import Toolbar from '../components/Toolbar/Toolbar'
-import Carousel from '../components/Carousel/Carousel';
 
 const API_END_POINT = "https://api.themoviedb.org/3/" // point d'entrer de l'API
 const POPULAR_MOVIES_URL = "discover/movie?language=fr&sort_by=popularity.desc&include_adult=false&append_to_response=images"

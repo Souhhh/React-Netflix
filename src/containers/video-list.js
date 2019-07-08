@@ -32,7 +32,7 @@ const VideoList = (props) => {
     };
     function scrollRight(){
         next+=1;
-        alert(next);
+        // alert(next);
     }
 }
 export default VideoList;
