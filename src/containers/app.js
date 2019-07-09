@@ -29,7 +29,7 @@ class App extends Component {
                 this.applyVideoToCurrentMovie();
             });
 
-        }.bind(this));
+        }.bind(this)); 
     }
 
     applyVideoToCurrentMovie(){
@@ -88,7 +88,7 @@ class App extends Component {
                 <header className="toolbar mb-5">
         <nav className="toolbar__navigation">
             <div></div>
-            <div className="toolbar__logo"><a href="/">Netflix</a></div>
+            <div className="toolbar__logo"><a href="/">souflix</a></div>
             {/* <div className="spacer"></div> */}
             <div className="toolbar_navigation-items">
                 <ul>

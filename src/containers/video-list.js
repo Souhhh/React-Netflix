@@ -1,38 +1,62 @@
 // Liste des petites vidéos recommandées (en preview) qui contiendront une image et un texte.
 
-import React from 'react';
+import React, {Component} from 'react';
 import VideoListItem from '../components/video-list-item'
 
 
 
-const VideoList = (props) => {    
-    const {movieList} = props;
-    let previous = 0;
-    let next = 6;
+class VideoList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            // previous: 1, 
+            next:7, 
+            movieList:props.movieList
+        };
+    }
     
-        return (
+        render() {
+            return (
         <div>
-            <h4 className="titreSection">Films recommandés</h4> 
+            <h4 className="titreSection">Recommendations</h4> 
             <div className="container-videoList">
-                <a href="#0" className="arrow__btn">‹</a>
+                <a href={`#${this.state.previous}`} className="arrow__btn" onClick={this.scrollLeft.bind(this)}>‹</a>
                 <ul className="videos">
                 {/* Pour chaque vidéo recommandée, on lui donne un id pour ensuite se référer à lui pour fiare tourner le carousel. */}
-                {movieList.map((movie, index) => {
-                        return <div id ={index} ><VideoListItem key= {movie.id} movie={movie} callback={onClickListItem}/></div>
+                {this.state.movieList.map((movie, index) => {
+                
+                        return <div id ={index} ><VideoListItem key={movie.id} movie={movie} callback={this.onClickListItem.bind(this)}/></div>
                     })}
                 </ul>
-                <a href={`#${next}`} className="arrow__btn" onClick={scrollRight} callback={scrollRight}>›</a>
+                <a href={`#${this.state.next}`} className="arrow__btn" onClick={this.scrollRight.bind(this)}>›</a>
             </div>
+            <div>
         </div>
-        );
-    
-    function onClickListItem(movie){
+        </div>
+
+        
+    );
+};
+    onClickListItem(movie){
         // console.log('Parent :', movie);
-        props.callback(movie);
+        this.props.callback(movie);
     };
-    function scrollRight(){
-        next+=1;
+    
+    scrollLeft(){
+        if (this.state.previous === 1)
+            this.setState({previous:this.state.movieList.length});
+        else 
+            this.state.next-=1;
         // alert(next);
-    }
+    };
+    scrollRight(){
+        this.setState((state, props) => {
+            let firstElem = state.movieLis;
+            state.movieList.push(firstElem);
+            console.log(state.movieList);
+            return {movieList: state.movieList}
+        });
+        // alert(next);
+    };    
 }
 export default VideoList;
