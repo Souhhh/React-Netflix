@@ -9,7 +9,7 @@ class VideoList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // previous: 1, 
+            previous: 0, 
             next:7, 
             movieList:props.movieList
         };
@@ -31,6 +31,9 @@ class VideoList extends Component {
                 <a href={`#${this.state.next}`} className="arrow__btn" onClick={this.scrollRight.bind(this)}>›</a>
             </div>
             <div>
+            <h4 className="titreSection">Popular on Netflix</h4>
+            <h4 className="titreSection">Manga</h4>
+            <h4 className="titreSection">Documentary</h4>
         </div>
         </div>
 
@@ -43,20 +46,17 @@ class VideoList extends Component {
     };
     
     scrollLeft(){
-        if (this.state.previous === 1)
-            this.setState({previous:this.state.movieList.length});
-        else 
-            this.state.next-=1;
-        // alert(next);
-    };
+        if (this.state.previous > 0){
+            this.setState({previous:this.state.previous-1});
+            this.setState({next:this.state.next-1});
+        }
+    }
     scrollRight(){
-        this.setState((state, props) => {
-            let firstElem = state.movieLis;
-            state.movieList.push(firstElem);
-            console.log(state.movieList);
-            return {movieList: state.movieList}
-        });
-        // alert(next);
+        if (this.state.next < this.state.movieList.length-1){
+            this.setState({previous:this.state.previous+1});
+            this.setState({next:this.state.next+1});
+        }
     };    
 }
 export default VideoList;
+
