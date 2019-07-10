@@ -1,4 +1,4 @@
-// Notre vidéo youtube.
+// La vidéo youtube principale.
 
 import React from 'react';
 

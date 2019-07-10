@@ -10,15 +10,18 @@ class VideoList extends Component {
         super(props);
         this.state = {
             previous: 0, 
-            next:7, 
-            movieList:props.movieList
+            next:6, 
+            movieList:props.movieList,
+            moviesComedy:props.moviesComedy
         };
+        // console.log(moviesComedy)
     }
     
         render() {
             return (
         <div>
-            <h4 className="titreSection">Recommendations</h4> 
+            {/* LISTE DES FILMS LES PLUS POPULAIRES */}
+            <h4 className="titreSection">{this.props.title}</h4> 
             <div className="container-videoList">
                 <a href={`#${this.state.previous}`} className="arrow__btn" onClick={this.scrollLeft.bind(this)}>‹</a>
                 <ul className="videos">
@@ -31,9 +34,27 @@ class VideoList extends Component {
                 <a href={`#${this.state.next}`} className="arrow__btn" onClick={this.scrollRight.bind(this)}>›</a>
             </div>
             <div>
-            <h4 className="titreSection">Popular on Netflix</h4>
-            <h4 className="titreSection">Manga</h4>
-            <h4 className="titreSection">Documentary</h4>
+
+            {/* LISTE DES FILMS TYPE COMÉDIE */}
+            {/* <h4 className="titreSection">Comedy</h4>
+            <div className="container-videoList">
+                <a href={`#${this.state.previous}`} className="arrow__btn" onClick={this.scrollLeft.bind(this)}>‹</a>
+                <ul className="videos">
+                {/* Pour chaque vidéo recommandée, on lui donne un id pour ensuite se référer à lui pour fiare tourner le carousel. */}
+                {/* {this.state.moviesComedy.map((movie, index) => { */}
+                
+                        {/* return <div id ={index} ><VideoListItem key={movie.id} movie={movie} callback={this.onClickListItem.bind(this)}/></div> */}
+                    {/* })} */}
+                {/* </ul> */}
+                {/* <a href={`#${this.state.next}`} className="arrow__btn" onClick={this.scrollRight.bind(this)}>›</a> */}
+            {/* </div> */} 
+            
+            {/* LISTE DES DOCUMENTAIRES */}
+            {/* <h4 className="titreSection">Documentary</h4> */}
+            
+
+            {/* LISTE DES FILMS D'HORREUR */}
+            {/* <h4 className="titreSection">Horror</h4> */}
         </div>
         </div>
 

@@ -1,4 +1,4 @@
-// Preview : image + texte
+// Liste des vidéos avec une image (et un peut descriptif du film).
 
 import React from 'react';
 

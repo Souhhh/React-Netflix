@@ -7,20 +7,23 @@ import axios from 'axios'
 //import Row from 'react-bootstrap/Row';
 import Toolbar from '../components/Toolbar/Toolbar'
 
-const API_END_POINT = "https://api.themoviedb.org/3/" // point d'entrer de l'API
+const API_END_POINT = "https://api.themoviedb.org/3/" // point d'entré de l'API
 const POPULAR_MOVIES_URL = "discover/movie?language=fr&sort_by=popularity.desc&include_adult=false&append_to_response=images"
 const API_KEY = "api_key=844132b4db1beb141b6a86d0d727445a"
 const SEARCH_URL = "search/movie?language=fr&include_adult=false"
+
+const COMEDY_MOVIES_URL = "discover/movie?language=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=99"
 
 
 class App extends Component {
     constructor(props) {
         super(props)
-        this.state = {movieList:{}, currentMovie:{}}
+        this.state = {movieList:{}, currentMovie:{}, moviesComedy:{}}
     }
 
     componentWillMount() {
         this.initMovies();
+        this.comedyMovies();
     }
     // Changement du slice. Avant : 1,6 et maintenant : 1,19.
     initMovies(){
@@ -29,6 +32,13 @@ class App extends Component {
                 this.applyVideoToCurrentMovie();
             });
 
+        }.bind(this)); 
+    }
+
+    comedyMovies(){
+        axios.get(`${API_END_POINT}${COMEDY_MOVIES_URL}&${API_KEY}`).then(function(responseComedy){
+            //console.log(responseComedy)
+            this.setState({moviesComedy:responseComedy.data.results.slice(0,19)});
         }.bind(this)); 
     }
 
@@ -56,18 +66,25 @@ class App extends Component {
     setRecommendation(){
         axios.get(`${API_END_POINT}movie/${this.state.currentMovie.id}/recommendations?${API_KEY}&language=fr`).then(function(response){
             // Même chose ici, j'ai changé le slice pour avoir plus de 5 recommendations.
-            this.setState({movieList:response.data.results.slice(0,19)});
+            this.setState({movieList:{}});
+            // this.setState({movieList:response.data.results.slice(0,19)});    
+            const newState = { ...this.state }
+            newState.movieList = response.data.results.slice(0,19)
+            this.setState(newState)
         }.bind(this));
     }
-    
 
+  
+    
     onClickSearch(searchText){
         if(!searchText) return;
 
         axios.get(`${API_END_POINT}${SEARCH_URL}&${API_KEY}&query=${searchText}`).then((response) => {
             if(!response.data || !response.data.results[0]) return;
-            if(response.data.results[0].id != this.state.currentMovie.id){
-            this.setState({currentMovie: response.data.results[0]},() => {
+            console.log(response.data.results[0].id)
+            console.log(this.state.currentMovie.id)
+            if(response.data.results[0].id != this.state.currentMovie.id){               
+            this.setState({currentMovie : response.data.results[0]},() => {
                 this.applyVideoToCurrentMovie();
                 this.setRecommendation();
             })
@@ -79,42 +96,54 @@ class App extends Component {
     render() {
         const renderVideoList = () => {
             if(this.state.movieList.length>=5){
-                return <VideoList movieList={this.state.movieList} callback={this.onClickListItem.bind(this)}/>
+                return <VideoList title="Recommendations" movieList={this.state.movieList} callback={this.onClickListItem.bind(this)}/>
             }
         }
+        const renderMoviesComedy = () => {
+            if(this.state.moviesComedy.length>=5){
+                return <VideoList title="Comedy Movies" movieList={this.state.moviesComedy} callback={this.onClickListItem.bind(this)}/>
+            }
+        }
+        // const renderMoviesComedy = () => {
+        //     if(this.state.movieList.length>=5){
+        //         return <VideoComedy moviesComedy={this.state.moviesComedy} callback={this.comedyMovies.bind(this)}/>
+        //     }                
+        // }
         return (
             <div>
+                {/* NAVBAR */}
                 <div>
-                <header className="toolbar mb-5">
-        <nav className="toolbar__navigation">
-            <div></div>
-            <div className="toolbar__logo"><a href="/">souflix</a></div>
-            {/* <div className="spacer"></div> */}
-            <div className="toolbar_navigation-items">
-                <ul>
-                    <li id="myLi"><a href="/">Home</a></li>
-                    <li><a href="/">TV Shows</a></li>
-                    <li><a href="/">Movies</a></li>
-                    <li><a href="/">Recently Added</a></li>
-                    <li><a href="/">My List</a></li>
-                {/* <SearchBar/> */}
-                </ul>
-            </div>
-            <div className="spacer"></div>
-            <div className="search_bar"> 
-                    <SearchBar callback={this.onClickSearch.bind(this)}/>
-                </div>
-            <div className="toolbar_navigation-items">
-                <ul>
-                    <li><a href="/">KIDS</a></li>
-                    <li className="navDroite"><a href="/">DVD</a></li>
-                    {/* <img src="../../../images/cloche-notifications.png"></img> */}
-                </ul>
-            </div>
-        </nav>
-    </header>
+                    <header className="toolbar mb-5">
+                        <nav className="toolbar__navigation">
+                            <div></div>
+                            <div className="toolbar__logo"><a href="/">souflix</a></div>
+                            {/* <div className="spacer"></div> */}
+                            <div className="toolbar_navigation-items">
+                                <ul>
+                                    <li id="myLi"><a href="/">Home</a></li>
+                                    <li><a href="/">TV Shows</a></li>
+                                    <li><a href="/">Movies</a></li>
+                                    <li><a href="/">Recently Added</a></li>
+                                    <li><a href="/">My List</a></li>
+                                {/* <SearchBar/> */}
+                                </ul>
+                            </div>
+                            <div className="spacer"></div>
+                            <div className="search_bar"> 
+                                    <SearchBar callback={this.onClickSearch.bind(this)}/>
+                                </div>
+                            <div className="toolbar_navigation-items">
+                                <ul>
+                                    <li><a href="/">KIDS</a></li>
+                                    <li className="navDroite"><a href="/">DVD</a></li>
+                                    {/* <img src="../../../images/cloche-notifications.png"></img> */}
+                                </ul>
+                            </div>
+                        </nav>
+                    </header>
                 </div>
                 
+                {/* PREMIÈRE SECTION DU SITE AVEC LA VIDEO PRINCIPALE ET SON RÉSUMÉ */}
                 <div className="container-fluid">
                     <div className="wrapper">
                         <div className="description">
@@ -125,8 +154,11 @@ class App extends Component {
                         </div>
                     </div>
                 </div>
+
+                {/* SECONDE SESSION AVEC LE CAROUSEL DE VIDÉOS */}
                 <div>
                     {renderVideoList()} 
+                    {renderMoviesComedy()}
                 </div>
             </div>
         )
