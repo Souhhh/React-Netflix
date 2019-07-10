@@ -12,7 +12,9 @@ class VideoList extends Component {
             previous: 0, 
             next:6, 
             movieList:props.movieList,
-            moviesComedy:props.moviesComedy
+            moviesComedy:props.moviesComedy,
+            moviesTriller:props.moviesTriller,
+            moviesHorror:props.moviesHorror
         };
         // console.log(moviesComedy)
     }
@@ -38,11 +40,10 @@ class VideoList extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
-
-        
+                </div>        
     );
 };
+
     onClickListItem(movie){
         // console.log('Parent :', movie);
         this.props.callback(movie);

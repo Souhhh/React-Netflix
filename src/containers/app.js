@@ -12,18 +12,24 @@ const POPULAR_MOVIES_URL = "discover/movie?language=fr&sort_by=popularity.desc&i
 const API_KEY = "api_key=844132b4db1beb141b6a86d0d727445a"
 const SEARCH_URL = "search/movie?language=fr&include_adult=false"
 
-const COMEDY_MOVIES_URL = "discover/movie?language=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=99"
+const DOC_MOVIES_URL = "discover/movie?language=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=99"
+
+const TRILLER_MOVIES_URL = "discover/movie?language=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=53"
+
+const HORROR_MOVIES_URL = "discover/movie?language=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=27"
 
 
 class App extends Component {
     constructor(props) {
         super(props)
-        this.state = {movieList:{}, currentMovie:{}, moviesComedy:{}}
+        this.state = {movieList:{}, currentMovie:{}, moviesDoc:{}, moviesTriller:{}, moviesHorror:{}}
     }
 
     componentWillMount() {
         this.initMovies();
-        this.comedyMovies();
+        this.docMovies();
+        this.trillerMovies();
+        this.horrorMovies();
     }
     // Changement du slice. Avant : 1,6 et maintenant : 1,19.
     initMovies(){
@@ -35,10 +41,24 @@ class App extends Component {
         }.bind(this)); 
     }
 
-    comedyMovies(){
-        axios.get(`${API_END_POINT}${COMEDY_MOVIES_URL}&${API_KEY}`).then(function(responseComedy){
-            //console.log(responseComedy)
-            this.setState({moviesComedy:responseComedy.data.results.slice(0,19)});
+    docMovies(){
+        axios.get(`${API_END_POINT}${DOC_MOVIES_URL}&${API_KEY}`).then(function(responseDoc){
+            //console.log(responseDoc)
+            this.setState({moviesDoc:responseDoc.data.results.slice(0,19)});
+        }.bind(this)); 
+    }
+
+    trillerMovies(){
+        axios.get(`${API_END_POINT}${TRILLER_MOVIES_URL}&${API_KEY}`).then(function(responseTr){
+            //console.log(responseDoc)
+            this.setState({moviesTriller:responseTr.data.results.slice(0,19)});
+        }.bind(this)); 
+    }
+
+    horrorMovies(){
+        axios.get(`${API_END_POINT}${HORROR_MOVIES_URL}&${API_KEY}`).then(function(responseHr){
+            //console.log(responseDoc)
+            this.setState({moviesHorror:responseHr.data.results.slice(0,19)});
         }.bind(this)); 
     }
 
@@ -73,9 +93,7 @@ class App extends Component {
             this.setState(newState)
         }.bind(this));
     }
-
-  
-    
+   
     onClickSearch(searchText){
         if(!searchText) return;
 
@@ -99,16 +117,21 @@ class App extends Component {
                 return <VideoList title="Recommendations" movieList={this.state.movieList} callback={this.onClickListItem.bind(this)}/>
             }
         }
-        const renderMoviesComedy = () => {
-            if(this.state.moviesComedy.length>=5){
-                return <VideoList title="Comedy Movies" movieList={this.state.moviesComedy} callback={this.onClickListItem.bind(this)}/>
+        const renderMoviesDoc = () => {
+            if(this.state.moviesDoc.length>=5){
+                return <VideoList title="Documentary" movieList={this.state.moviesDoc} callback={this.onClickListItem.bind(this)}/>
             }
         }
-        // const renderMoviesComedy = () => {
-        //     if(this.state.movieList.length>=5){
-        //         return <VideoComedy moviesComedy={this.state.moviesComedy} callback={this.comedyMovies.bind(this)}/>
-        //     }                
-        // }
+        const renderMoviesTriller = () => {
+            if(this.state.moviesTriller.length>=5){
+                return <VideoList title="Triller" movieList={this.state.moviesTriller} callback={this.onClickListItem.bind(this)}/>
+            }
+        }
+        const renderMoviesHorror = () => {
+            if(this.state.moviesHorror.length>=5){
+                return <VideoList title="Horror" movieList={this.state.moviesHorror} callback={this.onClickListItem.bind(this)}/>
+            }
+        }
         return (
             <div>
                 {/* NAVBAR */}
@@ -158,7 +181,9 @@ class App extends Component {
                 {/* SECONDE SESSION AVEC LE CAROUSEL DE VIDÉOS */}
                 <div>
                     {renderVideoList()} 
-                    {renderMoviesComedy()}
+                    {renderMoviesDoc()}
+                    {renderMoviesTriller()}
+                    {renderMoviesHorror()}
                 </div>
             </div>
         )
