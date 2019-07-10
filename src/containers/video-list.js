@@ -30,13 +30,13 @@ class VideoList extends Component {
                                 <ul className="videos">
                                 {/* Pour chaque vidéo recommandée, on lui donne un id pour ensuite se référer à lui pour fiare tourner le carousel. */}
                                 {this.state.movieList.map((movie, index) => {                            
-                                        return <div id ={index} ><VideoListItem key={movie.id} movie={movie} callback={this.onClickListItem.bind(this)}/></div>
+                                        return <div id ={this.props.title + index} ><VideoListItem key={movie.id} movie={movie} callback={this.onClickListItem.bind(this)}/></div>
                                     })}
                                 </ul>
                             </div>
                             <div className="carousel-control">                               
-                                <a href={`#${this.state.previous}`} className="arrow__btn left" onClick={this.scrollLeft.bind(this)}>‹</a>                               
-                                <a href={`#${this.state.next}`} className="arrow__btn right" onClick={this.scrollRight.bind(this)}>›</a>                               
+                                <a href={`#${this.props.title + this.state.previous}`} className="arrow__btn left" onClick={this.scrollLeft.bind(this)}>‹</a>                               
+                                <a href={`#${this.props.title + this.state.next}`} className="arrow__btn right" onClick={this.scrollRight.bind(this)}>›</a>                               
                             </div>
                         </div>
                     </div>
@@ -60,6 +60,10 @@ class VideoList extends Component {
             this.setState({previous:this.state.previous+1});
             this.setState({next:this.state.next+1});
         }
+        // e.scrollTo({
+        //     top: 400,
+        //     behavior: 'smooth',
+        //   })
     };    
 }
 export default VideoList;
