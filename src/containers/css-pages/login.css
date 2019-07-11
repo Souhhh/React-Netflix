@@ -1,0 +1,72 @@
+.bg-login h3{
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 28px;
+    margin-left: 3.8rem;
+    padding-top: 3.5rem;
+}
+.bg-login input{
+    border-radius: 4px;
+    border: 0;
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    padding: 0px 20px 0;    
+}
+.bg-login h1 {
+    color: #e50914;
+    line-height: 90px;
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 2rem;
+}
+.bg-login{
+    background: radial-gradient(
+        rgba(31, 26, 0, 0),
+        rgba(0,0,0, 50)
+    ),url("https://assets.nflxext.com/ffe/siteui/vlv3/cd4c21a2-994a-42f1-a6c4-2e0b57438223/a5176290-251f-4dc9-a220-62a6cad8cb22/BE-fr-20190701-popsignuptwoweeks-perspective_alpha_website_small.jpg");
+    width: 100%;
+    height: 150%;
+    position: absolute;
+}
+.bg{
+    background-color: rgba(0,0,0,.75);
+    margin-left: 28rem;
+    margin-right: 28rem;
+}
+.text{
+    padding-bottom: 20rem;
+}
+.bg-login input{
+    padding-right: 8rem;
+    margin-left: 3.8rem;
+    margin-bottom: 2rem;
+    background: #333; 
+}
+.bg-login button{
+    color: #fff;
+    background-color: #e50914;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 24px 0 12px;
+    border: 0;
+    margin-left: 3.8rem;
+    padding-right: 8.9rem;
+}
+button > span{
+    padding-left: 7rem;
+}
+.text p{
+    margin-left: 3.8rem;
+    color: #737373;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 16px;
+}
+.text a {
+    color: white;
+}
