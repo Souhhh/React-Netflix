@@ -23,10 +23,6 @@ body{
     grid-auto-rows: minmax(100px, auto);
     /* background-color: black; */
   }
-/* .description {
-    grid-column: 1 / 3;
-    grid-row: 1;
-} */
 .lavideo { 
     grid-column: 2 / 4;
     /* grid-row: 1 / 3; */
@@ -37,6 +33,7 @@ body{
     padding-top: 8rem;
     /* Pour avoir un dégradé de noir à mon texte (titre + résumé de la vidéo principale). */
     background: linear-gradient(-90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+    font-family: 'Times New Roman';
 }
 
 .container-fluid{
@@ -76,7 +73,8 @@ body{
 
 .titreSection{
     margin-left: 2.3rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
     margin-top: 2rem;
 }
 .container-videoList{
@@ -151,15 +149,10 @@ a:nth-of-type(2) {
     padding: 0 2px;
     transition: 250ms all;
 }
-/* .media-left:hover{ */
-    /* margin: 0 40px;
-    transform: scale(1.2); */
-/* } */
 
 .media{
     display: grid;
     grid-template-columns: repeat(3,100%);
-    /* overflow: hidden; */
     scroll-behavior: smooth;
     transition: all ease .4s;
 
@@ -175,4 +168,70 @@ a:nth-of-type(2) {
 }
 .media img {
     width: 100%;
+}
+
+
+/* CSS de la Home page (page principale) */
+.bg-home{
+    background: radial-gradient(
+        rgba(31, 26, 0, 0),
+        rgba(0,0,0, 50)
+    ),url("https://assets.nflxext.com/ffe/siteui/vlv3/cd4c21a2-994a-42f1-a6c4-2e0b57438223/a5176290-251f-4dc9-a220-62a6cad8cb22/BE-fr-20190701-popsignuptwoweeks-perspective_alpha_website_small.jpg");
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.logoPage{
+    color: #e50914;
+    line-height: 90px;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-left: 10rem;
+}
+.bg-home h1{
+    font-size: 80px;
+    text-shadow: 1px 1px 10px #000;
+    text-align: center;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0px 0px 30px;
+    margin-top: 5rem;
+}
+.bg-home h4{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+.bg-home button{
+    border: none;    
+    padding: 22px 57px;
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+    background-color: #e50914;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.45);
+    -moz-box-shadow: 0 1px 0 rgba(0,0,0,.45);
+    box-shadow: 0 1px 0 rgba(0,0,0,.45);
+    text-transform: uppercase;
+    margin:0 auto;
+    margin-top: 3rem;
+    letter-spacing: 1.9px;
+    font-family: Arial;
+    /* Pour centrer le bouton. */
+    display: block;
+}
+.bg-home a {
+    color: #fff;
+    background-color: #e50914;
+    line-height: normal;
+    padding: 10px 16px;
+    font-weight: 400;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 16px;
+    text-decoration: none;
+    margin: 18px 3% 0;
+    float: right;
 }

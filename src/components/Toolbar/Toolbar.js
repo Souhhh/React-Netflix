@@ -23,6 +23,7 @@ const toolbar = (props) => (
                 <ul>
                     <li><a href="/">KIDS</a></li>
                     <li className="navDroite"><a href="/">DVD</a></li>
+                    <i className="fas fa-bell"></i>
                     {/* <img src="../../../images/cloche-notifications.png"></img> */}
                 </ul>
             </div>
