@@ -10,7 +10,7 @@
     font-size: 1.3rem;
     font-weight: bold;
     text-transform: uppercase;
-    padding-left: 2rem;
+    /* padding-left: 2rem; */
 }
 
 .toolbar__navigation{
@@ -58,7 +58,7 @@
 }
 
 .videos li{
-    padding: 0 0.5 rem;
+    padding: 0 0.5rem;
     margin-right: 0.5rem;
     margin-left: 3rem;
     background-color: transparent;
@@ -67,3 +67,6 @@
 .videos{
     display: flex;
 }
+
+
+/* CSS pour le menu dropdown de la page Souflix. */

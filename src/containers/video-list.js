@@ -30,7 +30,7 @@ class VideoList extends Component {
                                 <ul className="videos">
                                 {/* Pour chaque vidéo recommandée, on lui donne un id pour ensuite se référer à lui pour fiare tourner le carousel. */}
                                 {this.state.movieList.map((movie, index) => {                            
-                                        return <div id ={this.props.title + index} ><VideoListItem key={movie.id} movie={movie} callback={this.onClickListItem.bind(this)}/></div>
+                                        return <div key={movie.id} id ={this.props.title + index} ><VideoListItem movie={movie} callback={this.onClickListItem.bind(this)}/></div>
                                     })}
                                 </ul>
                             </div>

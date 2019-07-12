@@ -4,24 +4,38 @@ import VideoList from './video-list'
 import VideoDetail from '../components/video-detail'
 import Video from '../components/video'
 import axios from 'axios'
+import '../../node_modules/fontawesome/'
 
 const API_END_POINT = "https://api.themoviedb.org/3/" // point d'entrée de l'API
-const POPULAR_MOVIES_URL = "discover/movie?language=fr&sort_by=popularity.desc&include_adult=false&append_to_response=images"
 const API_KEY = "api_key=844132b4db1beb141b6a86d0d727445a"
 const SEARCH_URL = "search/movie?language=fr&include_adult=false"
 
+const POPULAR_MOVIES_URL = "discover/movie?language=fr&sort_by=popularity.desc&include_adult=false&append_to_response=images"
 const DOC_MOVIES_URL = "discover/movie?language=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=99"
-
 const TRILLER_MOVIES_URL = "discover/movie?language=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=53"
-
 const HORROR_MOVIES_URL = "discover/movie?language=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=27"
 
+function Test(){
+    return(    
+        <Router>
+            <div className="App">
+                <Switch>
+                    <Route path="/" exact component={Home}/>
+                    <Route path="/souflix" component={Souflix}/>  
+                    <Route path="/login" component={Login}/>
+                </Switch>                      
+            </div>
+        </Router>
+    );
+}
 
 class Souflix extends Component {
     constructor(props) {
         super(props)
-        this.state = {movieList:{}, currentMovie:{}, moviesDoc:{}, moviesTriller:{}, moviesHorror:{}}
+        this.state = {movieList:{}, currentMovie:{}, moviesDoc:{}, moviesTriller:{}, moviesHorror:{}
     }
+    this.logout = this.logout.bind(this);
+}
 
     componentWillMount() {
         this.initMovies();
@@ -109,7 +123,16 @@ class Souflix extends Component {
 }
 
 
+    logout(){
+        sessionStorage.setItem('userData', '');
+        sessionStorage.clear();
+        this.setState({redirect: true});
+    }
+
     render() {
+        if(this.state.redirect){
+            return (<Redirect to={'/login'}/>)
+        }
         const renderVideoList = () => {
             if(this.state.movieList.length>=5){
                 return <VideoList title="Recommendations" movieList={this.state.movieList} callback={this.onClickListItem.bind(this)}/>
@@ -159,6 +182,7 @@ class Souflix extends Component {
                                     <li><a href="/">KIDS</a></li>
                                     <li className="navDroite"><a href="/">DVD</a></li>
                                     {/* <img src="../../../images/cloche-notifications.png"></img> */}
+                                    <li><a href="./login" onClick={this.logout}>Logout</a></li>
                                 </ul>
                             </div>
                         </nav>

@@ -28,7 +28,7 @@
         rgba(0,0,0, 50)
     ),url("https://assets.nflxext.com/ffe/siteui/vlv3/cd4c21a2-994a-42f1-a6c4-2e0b57438223/a5176290-251f-4dc9-a220-62a6cad8cb22/BE-fr-20190701-popsignuptwoweeks-perspective_alpha_website_small.jpg");
     width: 100%;
-    height: 150%;
+    height: 160%;
     position: absolute;
 }
 .bg{
@@ -37,7 +37,7 @@
     margin-right: 28rem;
 }
 .text{
-    padding-bottom: 20rem;
+    padding-bottom: 4rem;
 }
 .bg-login input{
     padding-right: 8rem;

@@ -57,12 +57,12 @@ render(){
 
                     <input type="text" name="username" placeholder="Nom et prénom" onChange={this.onChange}/>
 
-                    <input type="text" name="email" placeholder="Email ou numéro de téléphone" onChange={this.onChange}/> 
+                    <input type="text" name="email" placeholder="E-mail" onChange={this.onChange}/> 
 
                     <input type="text" name="name" placeholder="Numéro de téléphone" onChange={this.onChange}/>                               
                     <input type="password" name="password" placeholder="Choisissez un mot de passe" onChange={this.onChange}/>
 
-                    <input type="checkbox" class="" name="emailPreference" id="bxid_emailPreference_true" tabindex="0" data-uia="emailPreference" value="true"></input>
+                    <input type="checkbox" class="" name="emailPreference" id="bxid_emailPreference_true" tabindex="0" data-uia="emailPreference" value="true"><span className="checkbox">Je ne souhaite pas recevoir les offres spéciales de Souflix par e-mail.</span></input>
 
                     <button type="submit" value="signup" onClick={this.signup}><span>S'inscrire</span></button>
                 </div>

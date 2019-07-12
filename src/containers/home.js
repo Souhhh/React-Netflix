@@ -26,7 +26,11 @@ class Home extends Component {
 
         }
     }
+
     render() {
+        if(this.state.redirect){
+            return (<Redirect to={'/login'}/>)
+        }
         return(
             <div className="bg-home">
                 <header className="home-header">
@@ -36,11 +40,10 @@ class Home extends Component {
                     <h4>où que vous soyez. sans engagement</h4>
                     <button className="btn">profitez d'un mois gratuit ></button>
                 </header>
-                {/* <Link to="/souflix">
-                    
+                {/* <Link to="/souflix">                    
                 </Link> */}
             </div>
-            );
-        }
+        );
+    }
 }
 export default Test;
